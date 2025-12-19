@@ -28,8 +28,65 @@ const partners = {
 };
 </script>
 
+<style scoped>
+/* Masquer la scrollbar tout en gardant le scroll fonctionnel */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE et Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari et Opera */
+}
+
+/* Animation de défilement infini */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 3));
+    }
+}
+
+@keyframes scroll-slow {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 3));
+    }
+}
+
+.animate-scroll {
+    animation: scroll 40s linear infinite;
+    will-change: transform;
+}
+
+.animate-scroll-slow {
+    animation: scroll-slow 45s linear infinite;
+    will-change: transform;
+}
+
+/* Pause l'animation pendant le scroll tactile */
+.overflow-x-auto:active .slider-track,
+.overflow-x-auto:hover .slider-track {
+    animation-play-state: paused;
+}
+
+/* Smooth scrolling sur mobile */
+.scroll-smooth {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Empêcher le bounce sur les bords */
+.overscroll-x-contain {
+    overscroll-behavior-x: contain;
+}
+</style>
+
 <template>
-    <section class="py-12 sm:py-16 lg:py-28 bg-white">
+    <section class="py-12 sm:py-16 lg:py-28 bg-white overflow-hidden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
 
             <!-- Header minimaliste -->
@@ -45,16 +102,42 @@ const partners = {
 
             <!-- Assurances -->
             <div class="mb-10 sm:mb-12 lg:mb-16">
-                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
+                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8 px-4 sm:px-0">
                     <div class="w-1 h-1 rounded-full bg-gray-400"></div>
                     <h3 class="text-[10px] sm:text-xs font-light text-gray-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">Assurances</h3>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
+                <!-- Mobile: Slider -->
+                <div class="md:hidden relative">
+                    <div class="overflow-x-auto scrollbar-hide scroll-smooth overscroll-x-contain">
+                        <div class="slider-track flex gap-4 animate-scroll px-4">
+                            <!-- Duplicated for infinite scroll -->
+                            <div
+                                v-for="(partner, index) in [...partners.assurances, ...partners.assurances, ...partners.assurances]"
+                                :key="`assurance-${index}`"
+                                class="flex-shrink-0 w-32 h-24 rounded-lg border border-gray-200 bg-white p-3 flex items-center justify-center transition-transform active:scale-95"
+                            >
+                                <img
+                                    :src="partner.logo"
+                                    :alt="partner.name"
+                                    class="max-w-full max-h-full object-contain pointer-events-none"
+                                    @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
+                                />
+                                <span class="hidden text-xs font-light text-gray-500 text-center">{{ partner.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gradient overlays -->
+                    <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
+                    <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+                </div>
+
+                <!-- Tablet & Desktop: Grid -->
+                <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
                     <div
                         v-for="partner in partners.assurances"
                         :key="partner.name"
-                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 sm:p-3 flex items-center justify-center transition-all duration-300"
+                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-3 flex items-center justify-center transition-all duration-300"
                     >
                         <img
                             :src="partner.logo"
@@ -69,16 +152,42 @@ const partners = {
 
             <!-- Crédit -->
             <div class="mb-10 sm:mb-12 lg:mb-16">
-                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
+                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8 px-4 sm:px-0">
                     <div class="w-1 h-1 rounded-full bg-gray-400"></div>
                     <h3 class="text-[10px] sm:text-xs font-light text-gray-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">Crédit</h3>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
+                <!-- Mobile: Slider -->
+                <div class="md:hidden relative">
+                    <div class="overflow-x-auto scrollbar-hide scroll-smooth overscroll-x-contain">
+                        <div class="slider-track flex gap-4 animate-scroll-slow px-4">
+                            <!-- Duplicated for infinite scroll -->
+                            <div
+                                v-for="(partner, index) in [...partners.credit, ...partners.credit, ...partners.credit]"
+                                :key="`credit-${index}`"
+                                class="flex-shrink-0 w-32 h-24 rounded-lg border border-gray-200 bg-white p-3 flex items-center justify-center transition-transform active:scale-95"
+                            >
+                                <img
+                                    :src="partner.logo"
+                                    :alt="partner.name"
+                                    class="max-w-full max-h-full object-contain pointer-events-none"
+                                    @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
+                                />
+                                <span class="hidden text-xs font-light text-gray-500 text-center">{{ partner.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gradient overlays -->
+                    <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
+                    <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+                </div>
+
+                <!-- Tablet & Desktop: Grid -->
+                <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
                     <div
                         v-for="partner in partners.credit"
                         :key="partner.name"
-                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 sm:p-3 flex items-center justify-center transition-all duration-300"
+                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-3 flex items-center justify-center transition-all duration-300"
                     >
                         <img
                             :src="partner.logo"
@@ -93,21 +202,22 @@ const partners = {
 
             <!-- Leasing -->
             <div class="mb-10 sm:mb-12 lg:mb-16">
-                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
+                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8 px-4 sm:px-0">
                     <div class="w-1 h-1 rounded-full bg-gray-400"></div>
                     <h3 class="text-[10px] sm:text-xs font-light text-gray-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">Leasing</h3>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4 max-w-md">
+                <!-- Mobile & Tablet: Simple Grid (only 2 logos) -->
+                <div class="flex gap-4 justify-center md:justify-start max-w-md mx-auto md:mx-0">
                     <div
                         v-for="partner in partners.leasing"
                         :key="partner.name"
-                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 sm:p-3 flex items-center justify-center transition-all duration-300"
+                        class="flex-1 max-w-[140px] aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 flex items-center justify-center transition-all duration-300"
                     >
                         <img
                             :src="partner.logo"
                             :alt="partner.name"
-                            class="max-w-full max-h-full object-contain transition-all duration-300 group-hover:scale-105"
+                            class="max-w-full max-h-full object-contain"
                             @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                         />
                         <span class="hidden text-xs font-light text-gray-500 text-center">{{ partner.name }}</span>
