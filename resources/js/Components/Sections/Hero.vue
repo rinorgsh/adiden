@@ -66,11 +66,11 @@ defineEmits(['openQuoteModal']);
                                 </div>
 
                                 <!-- CTA Buttons Mobile & Tablet -->
-                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:hidden animate-fade-in-delay-3">
+                                <div class="flex flex-col sm:flex-row gap-4 sm:gap-4 lg:hidden animate-fade-in-delay-3">
                                     <!-- Demander un devis -->
                                     <button
                                         @click="$emit('openQuoteModal')"
-                                        class="group flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-light text-base sm:text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10"
+                                        class="group flex items-center justify-center gap-3 bg-white text-black px-8 py-5 rounded-full font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10 touch-manipulation min-h-[56px] active:scale-95"
                                     >
                                         <span>Demander un devis</span>
                                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -80,8 +80,8 @@ defineEmits(['openQuoteModal']);
 
                                     <!-- Nous appeler -->
                                     <a
-                                        href="tel:+32123456789"
-                                        class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-4 rounded-full font-light text-base sm:text-lg tracking-wide hover:bg-white/5 transition-all duration-300"
+                                        href="tel:+32470123456"
+                                        class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-5 rounded-full font-light text-lg tracking-wide hover:bg-white/5 transition-all duration-300 touch-manipulation min-h-[56px] active:scale-95"
                                     >
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
@@ -151,7 +151,7 @@ defineEmits(['openQuoteModal']);
                                     <!-- Demander un devis -->
                                     <button
                                         @click="$emit('openQuoteModal')"
-                                        class="group flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10"
+                                        class="group flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10 touch-manipulation min-h-[56px]"
                                     >
                                         <span>Demander un devis</span>
                                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -161,8 +161,8 @@ defineEmits(['openQuoteModal']);
 
                                     <!-- Nous appeler -->
                                     <a
-                                        href="tel:+32123456789"
-                                        class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/5 transition-all duration-300"
+                                        href="tel:+32470123456"
+                                        class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/5 transition-all duration-300 touch-manipulation min-h-[56px]"
                                     >
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>

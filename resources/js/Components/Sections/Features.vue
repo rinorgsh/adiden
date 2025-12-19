@@ -50,11 +50,11 @@ const partners = {
                     <h3 class="text-[10px] sm:text-xs font-light text-gray-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">Assurances</h3>
                 </div>
 
-                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-2 sm:gap-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
                     <div
                         v-for="partner in partners.assurances"
                         :key="partner.name"
-                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-3 flex items-center justify-center transition-all duration-300"
+                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 sm:p-3 flex items-center justify-center transition-all duration-300"
                     >
                         <img
                             :src="partner.logo"
@@ -68,17 +68,17 @@ const partners = {
             </div>
 
             <!-- Crédit -->
-            <div class="mb-16">
-                <div class="flex items-center gap-3 mb-8">
+            <div class="mb-10 sm:mb-12 lg:mb-16">
+                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
                     <div class="w-1 h-1 rounded-full bg-gray-400"></div>
-                    <h3 class="text-xs font-light text-gray-500 uppercase tracking-[0.3em]">Crédit</h3>
+                    <h3 class="text-[10px] sm:text-xs font-light text-gray-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">Crédit</h3>
                 </div>
 
-                <div class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
                     <div
                         v-for="partner in partners.credit"
                         :key="partner.name"
-                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-3 flex items-center justify-center transition-all duration-300"
+                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 sm:p-3 flex items-center justify-center transition-all duration-300"
                     >
                         <img
                             :src="partner.logo"
@@ -92,17 +92,17 @@ const partners = {
             </div>
 
             <!-- Leasing -->
-            <div class="mb-16">
-                <div class="flex items-center gap-3 mb-8">
+            <div class="mb-10 sm:mb-12 lg:mb-16">
+                <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
                     <div class="w-1 h-1 rounded-full bg-gray-400"></div>
-                    <h3 class="text-xs font-light text-gray-500 uppercase tracking-[0.3em]">Leasing</h3>
+                    <h3 class="text-[10px] sm:text-xs font-light text-gray-500 uppercase tracking-[0.2em] sm:tracking-[0.3em]">Leasing</h3>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 max-w-xs">
+                <div class="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4 max-w-md">
                     <div
                         v-for="partner in partners.leasing"
                         :key="partner.name"
-                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-3 flex items-center justify-center transition-all duration-300"
+                        class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-4 sm:p-3 flex items-center justify-center transition-all duration-300"
                     >
                         <img
                             :src="partner.logo"

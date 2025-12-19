@@ -2,8 +2,11 @@
 import { Head } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import Hero from '@/Components/Sections/Hero.vue';
-import Services from '@/Components/Sections/Services.vue';
-import Team from '@/Components/Sections/Team.vue';
+import PromisesSection from '@/Components/Sections/PromisesSection.vue';
+import ServicesSection from '@/Components/Sections/ServicesSection.vue';
+import CreditSection from '@/Components/Sections/CreditSection.vue';
+import WhyAdidenSection from '@/Components/Sections/WhyAdidenSection.vue';
+import HowItWorksSection from '@/Components/Sections/HowItWorksSection.vue';
 import Features from '@/Components/Sections/Features.vue';
 import Testimonials from '@/Components/Sections/Testimonials.vue';
 import FAQ from '@/Components/Sections/FAQ.vue';
@@ -67,8 +70,8 @@ onMounted(() => {
 
     <MainLayout ref="mainLayoutRef" :can-login="canLogin">
         <Hero @open-quote-modal="handleOpenQuoteModal" />
-        <Services />
-        <Team />
+        
+        <WhyAdidenSection />
         <Features />
         <Testimonials />
         <FAQ />

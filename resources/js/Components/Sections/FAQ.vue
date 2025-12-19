@@ -86,33 +86,35 @@ const faqs = [
                 >
                     <button
                         @click="toggleItem(index)"
-                        class="w-full text-left"
+                        class="w-full text-left touch-manipulation"
                     >
-                        <div class="border-l-2 border-gray-200 hover:border-gray-300 pl-3 sm:pl-4 lg:pl-6 py-3 sm:py-4 transition-all duration-300">
-                            <div class="flex items-start justify-between gap-3 sm:gap-4">
-                                <div class="flex items-start gap-2 sm:gap-3 lg:gap-4 flex-1">
-                                    <div class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs font-light mt-0.5 sm:mt-1">
+                        <div class="border-l-2 border-gray-200 hover:border-gray-300 pl-4 sm:pl-5 lg:pl-6 py-4 sm:py-5 transition-all duration-300">
+                            <div class="flex items-start justify-between gap-4 sm:gap-5">
+                                <div class="flex items-start gap-3 sm:gap-4 lg:gap-5 flex-1 min-h-[44px]">
+                                    <div class="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 text-xs sm:text-sm font-light mt-1">
                                         {{ index + 1 }}
                                     </div>
-                                    <span class="text-sm sm:text-base lg:text-lg font-light text-gray-900">
+                                    <span class="text-base sm:text-lg lg:text-xl font-light text-gray-900 pt-1">
                                         {{ faq.question }}
                                     </span>
                                 </div>
-                                <svg
-                                    class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 mt-0.5 sm:mt-1"
-                                    :class="{ 'rotate-180': isOpen(index) }"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                                </svg>
+                                <div class="flex items-center min-h-[44px] min-w-[44px] justify-center">
+                                    <svg
+                                        class="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0 transition-transform duration-300"
+                                        :class="{ 'rotate-180': isOpen(index) }"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </div>
                             </div>
 
                             <div
                                 v-show="isOpen(index)"
-                                class="mt-3 sm:mt-4 pl-7 sm:pl-9 lg:pl-10 text-xs sm:text-sm text-gray-600 font-light leading-relaxed"
+                                class="mt-4 sm:mt-5 pl-9 sm:pl-11 lg:pl-12 text-sm sm:text-base text-gray-600 font-light leading-relaxed pr-12 sm:pr-16"
                             >
                                 {{ faq.answer }}
                             </div>
@@ -126,15 +128,15 @@ const faqs = [
 
             <!-- CTA -->
             <div class="text-center px-4">
-                <p class="text-gray-500 font-light mb-4 sm:mb-6 text-xs sm:text-sm">
+                <p class="text-gray-500 font-light mb-6 sm:mb-8 text-sm sm:text-base">
                     Vous ne trouvez pas la réponse à votre question ?
                 </p>
                 <button
                     @click="$emit('openQuoteModal')"
-                    class="inline-flex items-center gap-2 text-gray-900 font-light text-xs sm:text-sm hover:text-gray-600 transition-colors group"
+                    class="inline-flex items-center justify-center gap-3 text-gray-900 font-light text-base sm:text-lg hover:text-gray-600 transition-colors group min-h-[48px] px-6 py-3 rounded-full border-2 border-gray-200 hover:border-gray-300 touch-manipulation"
                 >
                     <span>Contactez-nous</span>
-                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                 </button>
