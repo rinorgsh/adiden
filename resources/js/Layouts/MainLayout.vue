@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
-import QuoteForm from '.Quoteform.vue';
+import QuoteForm from './Quoteform.vue';
 
 const showQuoteModal = ref(false);
 const isDarkBackground = ref(true);
