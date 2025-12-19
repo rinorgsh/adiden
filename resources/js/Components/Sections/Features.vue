@@ -13,8 +13,9 @@ const partners = {
         { name: 'ARAG', logo: '/images/arag.png' }
     ],
     credit: [
-        { name: 'BNP Paribas', logo: '/images/bnp.png' },
-        { name: 'Belfius', logo: '/images/belfius.png' },
+        { name: 'BNP Paribas Credit Broker', logo: '/images/bnpbrokers.png' },
+        { name: 'Elantis', logo: '/images/elantis.png' },
+        { name: 'BankB', logo: '/images/bankb.webp' },
         { name: 'Europabank', logo: '/images/eurobank.jpg' },
         { name: 'AlphaCredit', logo: '/images/alpha.jpg' },
         { name: 'Cofidis', logo: '/images/cofidis.png' },
