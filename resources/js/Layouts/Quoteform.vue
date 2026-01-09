@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
+import NotificationModal from '@/Components/NotificationModal.vue';
 
 const emit = defineEmits(['close']);
 
@@ -7,7 +8,7 @@ const currentStep = ref(1);
 const formData = ref({
     // Étape 1 : Type de demande
     type: '',
-    
+
     // Étape 2 : Informations personnelles
     nom: '',
     prenom: '',
@@ -17,7 +18,7 @@ const formData = ref({
     codePostal: '',
     ville: '',
     dateNaissance: '',
-    
+
     // Champs spécifiques Assurance Auto
     marqueVehicule: '',
     modeleVehicule: '',
@@ -27,7 +28,7 @@ const formData = ref({
     valeurVehicule: '',
     kilometrage: '',
     usageVehicule: '',
-    
+
     // Champs spécifiques Assurance Habitation
     typeLogement: '',
     surfaceLogement: '',
@@ -35,13 +36,13 @@ const formData = ref({
     nombrePieces: '',
     valeurMobilier: '',
     systemeSecurite: '',
-    
+
     // Champs spécifiques Assurance Vie
     montantCapital: '',
     dureeContrat: '',
     beneficiaires: '',
     objectifAssurance: '',
-    
+
     // Champs spécifiques Crédit Hypothécaire
     montantEmprunt: '',
     dureeEmprunt: '',
@@ -50,16 +51,42 @@ const formData = ref({
     typeAcquisition: '',
     situationProfessionnelle: '',
     revenuMensuel: '',
-    
+
     // Champs spécifiques Crédit Personnel
     montantSouhaite: '',
     dureeSouhaitee: '',
     objetCredit: '',
     chargesMensuelles: '',
-    
+
     // Message optionnel
     message: ''
 });
+
+// États pour les modals
+const modalState = ref({
+    show: false,
+    type: 'success', // 'success', 'error', 'loading'
+    title: '',
+    message: ''
+});
+
+const showModal = (type, title, message) => {
+    modalState.value = {
+        show: true,
+        type,
+        title,
+        message
+    };
+};
+
+const closeModal = () => {
+    modalState.value.show = false;
+
+    // Si c'était un succès, fermer le formulaire après fermeture du modal
+    if (modalState.value.type === 'success') {
+        emit('close');
+    }
+};
 
 const types = [
     { value: 'assurance-auto', label: 'Assurance Auto', icon: '🚗' },
@@ -86,9 +113,56 @@ const previousStep = () => {
     }
 };
 
+const validateForm = () => {
+    // Validation des champs obligatoires
+    if (!formData.value.nom.trim()) {
+        showModal(
+            'error',
+            'Nom manquant',
+            'Le champ "Nom" est obligatoire. Veuillez renseigner votre nom de famille.'
+        );
+        return false;
+    }
+    if (!formData.value.prenom.trim()) {
+        showModal(
+            'error',
+            'Prénom manquant',
+            'Le champ "Prénom" est obligatoire. Veuillez renseigner votre prénom.'
+        );
+        return false;
+    }
+    if (!formData.value.email.trim()) {
+        showModal(
+            'error',
+            'Email manquant',
+            'Le champ "Email" est obligatoire. Veuillez renseigner votre adresse email pour que nous puissions vous recontacter.'
+        );
+        return false;
+    }
+    // Validation email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.value.email)) {
+        showModal(
+            'error',
+            'Email invalide',
+            `L'adresse email "${formData.value.email}" n'est pas valide. Veuillez vérifier le format (exemple: nom@exemple.com).`
+        );
+        return false;
+    }
+    return true;
+};
+
 const handleSubmit = async () => {
+    // Valider le formulaire
+    if (!validateForm()) {
+        return;
+    }
+
+    // Afficher le modal de chargement
+    showModal('loading', 'Envoi en cours...', 'Veuillez patienter pendant que nous traitons votre demande');
+
     try {
-        // Envoyer les données à votre backend
+        // Envoyer les données au backend
         const response = await fetch('/api/devis', {
             method: 'POST',
             headers: {
@@ -98,21 +172,61 @@ const handleSubmit = async () => {
             body: JSON.stringify(formData.value)
         });
 
-        if (response.ok) {
-            alert('Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.');
-            emit('close');
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+            // Succès
+            showModal(
+                'success',
+                'Demande envoyée !',
+                data.message || 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.'
+            );
         } else {
-            alert('Une erreur est survenue. Veuillez réessayer.');
+            // Erreur du serveur
+            let errorTitle = 'Erreur d\'envoi';
+            let errorMessage = data.message || 'Une erreur est survenue lors de l\'envoi de votre demande.';
+
+            // Si erreurs de validation spécifiques
+            if (data.errors && Object.keys(data.errors).length > 0) {
+                const errorKey = Object.keys(data.errors)[0];
+                const errorValue = Object.values(data.errors)[0];
+                const fieldName = {
+                    'type': 'Type de demande',
+                    'email': 'Email',
+                    'nom': 'Nom',
+                    'prenom': 'Prénom'
+                }[errorKey] || errorKey;
+
+                errorTitle = `Erreur: ${fieldName}`;
+                errorMessage = Array.isArray(errorValue) ? errorValue[0] : errorValue;
+            }
+
+            showModal('error', errorTitle, errorMessage);
         }
     } catch (error) {
         console.error('Erreur lors de l\'envoi:', error);
-        alert('Une erreur est survenue. Veuillez réessayer.');
+
+        // Erreur réseau ou autre
+        showModal(
+            'error',
+            'Problème de connexion',
+            'Impossible de contacter le serveur. Veuillez vérifier votre connexion internet et réessayer dans quelques instants.'
+        );
     }
 };
 </script>
 
 <template>
     <div class="space-y-4 sm:space-y-6">
+        <!-- Modal de notification -->
+        <NotificationModal
+            :show="modalState.show"
+            :type="modalState.type"
+            :title="modalState.title"
+            :message="modalState.message"
+            @close="closeModal"
+        />
+
         <!-- Progress Indicator -->
         <div class="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
             <div class="flex items-center">
@@ -182,19 +296,25 @@ const handleSubmit = async () => {
 
                     <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Nom</label>
+                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                                Nom <span class="text-red-500">*</span>
+                            </label>
                             <input
                                 v-model="formData.nom"
                                 type="text"
+                                required
                                 class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
                                 placeholder="Dupont"
                             />
                         </div>
                         <div>
-                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Prénom</label>
+                            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                                Prénom <span class="text-red-500">*</span>
+                            </label>
                             <input
                                 v-model="formData.prenom"
                                 type="text"
+                                required
                                 class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
                                 placeholder="Jean"
                             />
@@ -203,10 +323,13 @@ const handleSubmit = async () => {
 
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Email <span class="text-red-500">*</span>
+                            </label>
                             <input
                                 v-model="formData.email"
                                 type="email"
+                                required
                                 class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
                                 placeholder="jean.dupont@email.com"
                             />

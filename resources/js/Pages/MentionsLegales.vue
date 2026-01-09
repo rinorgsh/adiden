@@ -32,10 +32,10 @@ defineProps({
                             <p><span class="font-normal">Dénomination sociale :</span> Adiden Finances</p>
                             <p><span class="font-normal">Forme juridique :</span> Société privée à responsabilité limitée (SPRL)</p>
                             <p><span class="font-normal">Numéro d'entreprise (BCE) :</span> 0737 899 190</p>
-                            <p><span class="font-normal">Numéro RPM :</span> 0737 899 190</p>
+                            <p><span class="font-normal">Numéro FSMA :</span> 0737 899 190</p>
                             <p><span class="font-normal">Adresse du siège social :</span> Avenue Henri Conscience 41, 1140 Evere, Belgique</p>
                             <p><span class="font-normal">Téléphone :</span> <a href="tel:+3228081178" class="hover:text-gray-900 transition-colors">+32 2 808 11 78</a></p>
-                            <p><span class="font-normal">Email :</span> <a href="mailto:info@adidenfinances.be" class="hover:text-gray-900 transition-colors">info@adidenfinances.be</a></p>
+                            <p><span class="font-normal">Email :</span> <a href="mailto:info@adiden.be" class="hover:text-gray-900 transition-colors">info@adiden.be</a></p>
                         </div>
                     </section>
 
