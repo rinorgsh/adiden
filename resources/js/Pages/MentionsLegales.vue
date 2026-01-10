@@ -34,7 +34,7 @@ defineProps({
                             <p><span class="font-normal">Numéro d'entreprise (BCE) :</span> 0737 899 190</p>
                             <p><span class="font-normal">Numéro FSMA :</span> 0737 899 190</p>
                             <p><span class="font-normal">Adresse du siège social :</span> Avenue Henri Conscience 41, 1140 Evere, Belgique</p>
-                            <p><span class="font-normal">Téléphone :</span> <a href="tel:+3228081178" class="hover:text-gray-900 transition-colors">+32 2 808 11 78</a></p>
+                            <p><span class="font-normal">Téléphone :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">+32 489 62 39 90</a></p>
                             <p><span class="font-normal">Email :</span> <a href="mailto:info@adiden.be" class="hover:text-gray-900 transition-colors">info@adiden.be</a></p>
                         </div>
                     </section>
@@ -117,7 +117,7 @@ defineProps({
                             <div class="bg-gray-50 rounded-xl p-6 space-y-2">
                                 <p><span class="font-normal">Email :</span> <a href="mailto:info@adidenfinances.be" class="hover:text-gray-900 transition-colors">info@adidenfinances.be</a></p>
                                 <p><span class="font-normal">Courrier :</span> Avenue Henri Conscience 41, 1140 Evere</p>
-                                <p><span class="font-normal">Téléphone :</span> <a href="tel:+3228081178" class="hover:text-gray-900 transition-colors">+32 2 808 11 78</a></p>
+                                <p><span class="font-normal">Téléphone :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">+32 489 62 39 90</a></p>
                             </div>
                             <p>Nous nous engageons à traiter votre réclamation dans les plus brefs délais.</p>
                             <p>Si vous n'êtes pas satisfait de notre réponse, vous pouvez vous adresser à l'<a href="https://www.ombudsman-insurance.be" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-gray-700 transition-colors underline">Ombudsman des Assurances</a> ou au <a href="https://www.mediationconsommateur.be" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-gray-700 transition-colors underline">Service de Médiation pour le Consommateur</a>.</p>
@@ -191,8 +191,8 @@ defineProps({
                             <p class="font-normal text-gray-900">Avenue Henri Conscience 41</p>
                             <p>1140 Evere</p>
                             <p class="mt-4"><span class="font-normal">Assurances :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">0489 62 39 90</a></p>
-                            <p><span class="font-normal">Crédit Hypothécaire :</span> <a href="tel:+32483508818" class="hover:text-gray-900 transition-colors">0483 508 818</a></p>
-                            <p><span class="font-normal">Autres Crédits :</span> <a href="tel:+32485162085" class="hover:text-gray-900 transition-colors">0485 16 20 85</a></p>
+                            <p><span class="font-normal">Crédit Hypothécaire :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">0489 62 39 90</a></p>
+                            <p><span class="font-normal">Autres Crédits :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">0489 62 39 90</a></p>
                             <p class="mt-4"><a href="mailto:info@adiden.be" class="hover:text-gray-900 transition-colors">info@adiden.be</a></p>
                         </div>
                     </section>

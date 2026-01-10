@@ -229,7 +229,7 @@ onUnmounted(() => {
                     <!-- CTA Buttons -->
                     <div class="hidden lg:flex items-center gap-3">
                         <a
-                            href="tel:+32470123456"
+                            href="tel:+32489623990"
                             :class="buttonClasses"
                             class="inline-flex items-center gap-2 px-5 xl:px-6 py-2.5 xl:py-3 rounded-full font-light text-sm tracking-wide transition-all duration-300 transform hover:scale-105"
                         >
@@ -377,7 +377,7 @@ onUnmounted(() => {
                     <!-- CTA Section -->
                     <div class="p-6 border-t border-gray-100 space-y-3">
                         <a
-                            href="tel:+32470123456"
+                            href="tel:+32489623990"
                             class="w-full flex items-center justify-center gap-2 bg-white text-black border-2 border-black px-6 py-4 rounded-full font-light tracking-wide hover:bg-gray-50 transition-all duration-300"
                         >
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">

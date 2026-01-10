@@ -80,7 +80,7 @@ defineEmits(['openQuoteModal']);
 
                                     <!-- Nous appeler -->
                                     <a
-                                        href="tel:+32470123456"
+                                        href="tel:+32489623990"
                                         class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-5 rounded-full font-light text-lg tracking-wide hover:bg-white/5 transition-all duration-300 touch-manipulation min-h-[56px] active:scale-95"
                                     >
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -161,7 +161,7 @@ defineEmits(['openQuoteModal']);
 
                                     <!-- Nous appeler -->
                                     <a
-                                        href="tel:+32470123456"
+                                        href="tel:+32489623990"
                                         class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/5 transition-all duration-300 touch-manipulation min-h-[56px]"
                                     >
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
