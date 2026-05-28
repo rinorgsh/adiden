@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 defineEmits(['openQuoteModal']);
 
 const openItems = ref([]);
+const showAll = ref(false);
+const INITIAL_COUNT = 5;
 
 const toggleItem = (index) => {
     const itemIndex = openItems.value.indexOf(index);
@@ -16,6 +18,14 @@ const toggleItem = (index) => {
 
 const isOpen = (index) => {
     return openItems.value.includes(index);
+};
+
+const visibleFaqs = computed(() => {
+    return showAll.value ? faqs : faqs.slice(0, INITIAL_COUNT);
+});
+
+const toggleShowAll = () => {
+    showAll.value = !showAll.value;
 };
 
 const faqs = [
@@ -80,7 +90,7 @@ const faqs = [
             <!-- FAQ List -->
             <div class="max-w-4xl mx-auto space-y-2 sm:space-y-3">
                 <div
-                    v-for="(faq, index) in faqs"
+                    v-for="(faq, index) in visibleFaqs"
                     :key="index"
                     class="group"
                 >
@@ -121,6 +131,23 @@ const faqs = [
                         </div>
                     </button>
                 </div>
+            </div>
+
+            <!-- Voir plus / Voir moins -->
+            <div v-if="faqs.length > INITIAL_COUNT" class="max-w-4xl mx-auto mt-6 sm:mt-8 flex justify-center">
+                <button
+                    @click="toggleShowAll"
+                    class="inline-flex items-center gap-2 px-6 py-3 text-sm sm:text-base font-light text-gray-900 border border-gray-300 hover:border-gray-900 rounded-full transition-all duration-300 active:scale-95 touch-manipulation min-h-[48px]"
+                >
+                    <span>{{ showAll ? 'Voir moins' : `Voir plus (${faqs.length - INITIAL_COUNT} questions)` }}</span>
+                    <svg
+                        class="w-4 h-4 transition-transform duration-300"
+                        :class="{ 'rotate-180': showAll }"
+                        fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
             </div>
 
             <!-- Divider -->

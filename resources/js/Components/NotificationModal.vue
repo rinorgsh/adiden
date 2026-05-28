@@ -76,7 +76,7 @@ const closeModal = () => {
                 style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;"
             >
                 <!-- Overlay -->
-                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+                <div class="absolute inset-0 bg-adiden/50 backdrop-blur-sm"></div>
 
             <!-- Modal -->
             <Transition
@@ -165,7 +165,7 @@ const closeModal = () => {
                     <button
                         v-if="type !== 'loading'"
                         @click="closeModal"
-                        class="w-full bg-black text-white px-6 py-3 rounded-full font-light text-base hover:bg-gray-900 transition-all duration-300 transform hover:scale-[1.02] active:scale-95"
+                        class="w-full bg-adiden text-white px-6 py-3 rounded-full font-light text-base hover:bg-adiden-darker transition-all duration-300 transform hover:scale-[1.02] active:scale-95"
                     >
                         Fermer
                     </button>

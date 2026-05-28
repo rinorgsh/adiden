@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-black text-white pt-12 sm:pt-16 lg:pt-20 pb-6 sm:pb-8">
+    <footer class="bg-adiden text-white pt-12 sm:pt-16 lg:pt-20 pb-6 sm:pb-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
 
             <!-- Main Footer Content -->
@@ -32,29 +32,29 @@
                 <!-- Column 2: Assurances -->
                 <div>
                     <h4 class="text-[10px] sm:text-xs lg:text-sm font-light uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/40 mb-4 sm:mb-6">Assurances</h4>
-                    <ul class="space-y-3 sm:space-y-4">
+                    <ul class="space-y-1 sm:space-y-2">
                         <li>
-                            <a href="#assurances" class="text-white/60 hover:text-white font-light transition-colors text-sm sm:text-base inline-block py-1 touch-manipulation">
+                            <a href="#assurances" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Assurance Auto
                             </a>
                         </li>
                         <li>
-                            <a href="#assurances" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#assurances" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Assurance Habitation
                             </a>
                         </li>
                         <li>
-                            <a href="#assurances" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#assurances" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Assurance Familiale
                             </a>
                         </li>
                         <li>
-                            <a href="#assurances" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#assurances" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Assurance Vie
                             </a>
                         </li>
                         <li>
-                            <a href="#assurances" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#assurances" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Assurance Santé
                             </a>
                         </li>
@@ -64,24 +64,24 @@
                 <!-- Column 3: Crédits -->
                 <div>
                     <h4 class="text-[10px] sm:text-xs lg:text-sm font-light uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/40 mb-4 sm:mb-6">Crédits</h4>
-                    <ul class="space-y-2 sm:space-y-3">
+                    <ul class="space-y-1 sm:space-y-2">
                         <li>
-                            <a href="#credits" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#credits" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Crédit Hypothécaire
                             </a>
                         </li>
                         <li>
-                            <a href="#credits" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#credits" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Crédit Personnel
                             </a>
                         </li>
                         <li>
-                            <a href="#credits" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#credits" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Regroupement de Crédits
                             </a>
                         </li>
                         <li>
-                            <a href="#credits" class="text-white/60 hover:text-white font-light transition-colors text-xs sm:text-sm">
+                            <a href="#credits" class="text-white/60 hover:text-white active:text-white font-light transition-colors text-sm sm:text-base inline-flex items-center min-h-[44px] py-2 touch-manipulation">
                                 Leasing Auto
                             </a>
                         </li>
@@ -134,19 +134,19 @@
             <!-- Divider -->
             <div class="h-px bg-white/10 mb-6 sm:mb-8"></div>
 
-            <!-- Bottom bar -->
-            <div class="flex flex-col sm:flex-row justify-between items-center text-white/40 text-[10px] sm:text-xs font-light gap-4 sm:gap-0">
+            <!-- Bottom bar (padding bas mobile pour ne pas masquer derrière sticky CTA) -->
+            <div class="flex flex-col sm:flex-row justify-between items-center text-white/40 text-xs sm:text-xs font-light gap-2 sm:gap-0 pb-24 lg:pb-0">
                 <p class="text-center sm:text-left">
                     © 2025 Adiden Finances · Tous droits réservés
                 </p>
-                <div class="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-6">
-                    <a href="/mentions-legales" class="hover:text-white transition-colors">
+                <div class="flex flex-wrap justify-center sm:justify-end gap-2 sm:gap-6">
+                    <a href="/mentions-legales" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">
                         Mentions Légales
                     </a>
-                    <a href="#" class="hover:text-white transition-colors">
+                    <a href="#" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">
                         Confidentialité
                     </a>
-                    <a href="#" class="hover:text-white transition-colors">
+                    <a href="#" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">
                         Cookies
                     </a>
                 </div>

@@ -3,32 +3,42 @@ defineEmits(['openQuoteModal']);
 </script>
 
 <template>
-    <section class="relative min-h-screen overflow-hidden">
-        <!-- Background Image avec overlay -->
+    <section class="relative min-h-[100svh] overflow-hidden">
+        <!-- Background Image avec overlay (responsive : version légère sur mobile) -->
         <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070');">
-            </div>
+            <picture class="absolute inset-0">
+                <source media="(min-width: 1024px)" srcset="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop" />
+                <source media="(min-width: 640px)" srcset="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop" />
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=750&auto=format&fit=crop"
+                    alt=""
+                    class="absolute inset-0 w-full h-full object-cover object-center"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            </picture>
             <!-- Dark overlay for better text readability -->
-            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/75"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-adiden/70 via-adiden/60 to-adiden/75"></div>
         </div>
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-                <div class="min-h-screen flex items-center py-24 sm:py-28 lg:py-32">
+            <div class="container mx-auto px-5 sm:px-6 lg:px-8 xl:px-12">
+                <div class="min-h-[100svh] flex items-center py-20 sm:py-28 lg:py-32">
                     <div class="w-full">
                         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
 
                             <!-- LEFT SIDE - Texte & Infos -->
-                            <div class="text-white space-y-8 sm:space-y-10 lg:space-y-12">
+                            <div class="text-white space-y-6 sm:space-y-10 lg:space-y-12">
 
                                 <!-- Phrase d'accroche -->
-                                <div class="space-y-4 sm:space-y-5 lg:space-y-6 animate-fade-in">
-                                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.1]">
-                                        L'excellence au service
-                                        <span class="block font-extralight italic mt-2 sm:mt-3">de vos projets</span>
+                                <div class="space-y-3 sm:space-y-5 lg:space-y-6 animate-fade-in">
+                                    <h1 class="text-[2rem] xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.05] sm:leading-[1.1] break-words">
+                                        L'excellence
+                                        <span class="block">au service</span>
+                                        <span class="block font-extralight italic mt-1 sm:mt-3">de vos projets</span>
                                     </h1>
-                                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 font-light leading-relaxed max-w-2xl">
+                                    <p class="text-sm sm:text-lg md:text-xl lg:text-2xl text-white/70 font-light leading-relaxed max-w-2xl">
                                         Courtier indépendant spécialisé en assurances et crédits depuis 15 ans
                                     </p>
                                 </div>
@@ -47,30 +57,30 @@ defineEmits(['openQuoteModal']);
                                 </div>
 
                                 <!-- Stats luxueux -->
-                                <div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 animate-fade-in-delay-2">
+                                <div class="grid grid-cols-3 gap-2 sm:gap-6 lg:gap-8 animate-fade-in-delay-2">
                                     <!-- 15 ans -->
-                                    <div class="border-l-2 border-white/30 pl-3 sm:pl-4 lg:pl-5">
-                                        <p class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">15+</p>
-                                        <p class="text-[10px] sm:text-xs md:text-sm text-white/50 font-light uppercase tracking-wider leading-tight">Ans d'expertise</p>
+                                    <div class="border-l-2 border-white/30 pl-2 sm:pl-4 lg:pl-5 min-w-0">
+                                        <p class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-0.5 sm:mb-2 whitespace-nowrap">15+</p>
+                                        <p class="text-[9px] sm:text-xs md:text-sm text-white/50 font-light uppercase tracking-tight sm:tracking-wider leading-tight">Ans<br class="sm:hidden">d'expertise</p>
                                     </div>
                                     <!-- Clients -->
-                                    <div class="border-l-2 border-white/30 pl-3 sm:pl-4 lg:pl-5">
-                                        <p class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">2500+</p>
-                                        <p class="text-[10px] sm:text-xs md:text-sm text-white/50 font-light uppercase tracking-wider leading-tight">Clients</p>
+                                    <div class="border-l-2 border-white/30 pl-2 sm:pl-4 lg:pl-5 min-w-0">
+                                        <p class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-0.5 sm:mb-2 whitespace-nowrap">2500+</p>
+                                        <p class="text-[9px] sm:text-xs md:text-sm text-white/50 font-light uppercase tracking-tight sm:tracking-wider leading-tight">Clients</p>
                                     </div>
                                     <!-- Satisfaction -->
-                                    <div class="border-l-2 border-white/30 pl-3 sm:pl-4 lg:pl-5">
-                                        <p class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">98%</p>
-                                        <p class="text-[10px] sm:text-xs md:text-sm text-white/50 font-light uppercase tracking-wider leading-tight">Satisfaction</p>
+                                    <div class="border-l-2 border-white/30 pl-2 sm:pl-4 lg:pl-5 min-w-0">
+                                        <p class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white mb-0.5 sm:mb-2 whitespace-nowrap">98%</p>
+                                        <p class="text-[9px] sm:text-xs md:text-sm text-white/50 font-light uppercase tracking-tight sm:tracking-wider leading-tight">Satisfaits</p>
                                     </div>
                                 </div>
 
                                 <!-- CTA Buttons Mobile & Tablet -->
-                                <div class="flex flex-col sm:flex-row gap-4 sm:gap-4 lg:hidden animate-fade-in-delay-3">
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:hidden animate-fade-in-delay-3">
                                     <!-- Demander un devis -->
                                     <button
                                         @click="$emit('openQuoteModal')"
-                                        class="group flex items-center justify-center gap-3 bg-white text-black px-8 py-5 rounded-full font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10 touch-manipulation min-h-[56px] active:scale-95"
+                                        class="group flex items-center justify-center gap-3 bg-white text-adiden px-6 py-4 sm:px-8 sm:py-5 rounded-full font-light text-base sm:text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10 touch-manipulation min-h-[52px] sm:min-h-[56px] active:scale-95"
                                     >
                                         <span>Demander un devis</span>
                                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -81,7 +91,7 @@ defineEmits(['openQuoteModal']);
                                     <!-- Nous appeler -->
                                     <a
                                         href="tel:+32489623990"
-                                        class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-5 rounded-full font-light text-lg tracking-wide hover:bg-white/5 transition-all duration-300 touch-manipulation min-h-[56px] active:scale-95"
+                                        class="group flex items-center justify-center gap-3 border-2 border-white/30 text-white px-6 py-4 sm:px-8 sm:py-5 rounded-full font-light text-base sm:text-lg tracking-wide hover:bg-white/5 transition-all duration-300 touch-manipulation min-h-[52px] sm:min-h-[56px] active:scale-95"
                                     >
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
@@ -151,7 +161,7 @@ defineEmits(['openQuoteModal']);
                                     <!-- Demander un devis -->
                                     <button
                                         @click="$emit('openQuoteModal')"
-                                        class="group flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10 touch-manipulation min-h-[56px]"
+                                        class="group flex items-center justify-center gap-3 bg-white text-adiden px-8 py-4 rounded-full font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 shadow-lg shadow-white/10 touch-manipulation min-h-[56px]"
                                     >
                                         <span>Demander un devis</span>
                                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">

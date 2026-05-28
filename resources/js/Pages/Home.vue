@@ -66,7 +66,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Adiden Finances - Votre Courtier en Assurance et Crédit" />
+    <Head title="Votre Courtier en Assurance et Crédit" />
 
     <MainLayout ref="mainLayoutRef" :can-login="canLogin">
         <Hero @open-quote-modal="handleOpenQuoteModal" />

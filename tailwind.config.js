@@ -17,6 +17,11 @@ export default {
             },
             colors: {
                 'adiden': {
+                    DEFAULT: '#1D3559',
+                    'darker': '#15263F',
+                    'dark': '#1D3559',
+                    'light': '#2C4C7D',
+                    'lighter': '#3D5F92',
                     'blue-dark': '#1e3a8a',
                     'blue-light': '#3b82f6',
                     'gray-light': '#f8fafc',

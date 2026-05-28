@@ -3,7 +3,7 @@ defineEmits(['openQuoteModal']);
 </script>
 
 <template>
-    <section id="apropos" class="relative py-12 sm:py-16 lg:py-28 overflow-hidden bg-black">
+    <section id="apropos" class="relative py-12 sm:py-16 lg:py-28 overflow-hidden bg-adiden">
         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
 
             <!-- Header -->
@@ -19,20 +19,22 @@ defineEmits(['openQuoteModal']);
 
             <!-- Team Grid -->
             <div class="max-w-6xl mx-auto">
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
+                <div class="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-8 mb-6 sm:mb-8">
                     <!-- Membre 1 -->
                     <div class="group">
                         <div class="relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 bg-white/5">
                             <img
                                 src="/images/emin.jpg"
                                 alt="Emin Hasani"
+                                loading="lazy"
+                                decoding="async"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-adiden/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                         <div class="text-center">
-                            <h3 class="text-base sm:text-lg lg:text-xl font-light text-white mb-1">Emin Hasani</h3>
-                            <p class="text-xs sm:text-sm text-white/50 font-light">Expert en assurance</p>
+                            <h3 class="text-xs sm:text-lg lg:text-xl font-light text-white mb-1">Emin Hasani</h3>
+                            <p class="text-[10px] sm:text-sm text-white/50 font-light leading-tight">Expert en assurance</p>
                         </div>
                     </div>
 
@@ -42,13 +44,15 @@ defineEmits(['openQuoteModal']);
                             <img
                                 src="/images/adem.jpg"
                                 alt="Adem Hasani"
+                                loading="lazy"
+                                decoding="async"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-adiden/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                         <div class="text-center">
-                            <h3 class="text-base sm:text-lg lg:text-xl font-light text-white mb-1">Adem Hasani</h3>
-                            <p class="text-xs sm:text-sm text-white/50 font-light">Expert et conseiller en crédit</p>
+                            <h3 class="text-xs sm:text-lg lg:text-xl font-light text-white mb-1">Adem Hasani</h3>
+                            <p class="text-[10px] sm:text-sm text-white/50 font-light leading-tight">Conseiller crédit</p>
                         </div>
                     </div>
 
@@ -58,13 +62,15 @@ defineEmits(['openQuoteModal']);
                             <img
                                 src="/images/deniz.jpg"
                                 alt="Deniz Aktas"
+                                loading="lazy"
+                                decoding="async"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-adiden/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                         <div class="text-center">
-                            <h3 class="text-base sm:text-lg lg:text-xl font-light text-white mb-1">Deniz Aktas</h3>
-                            <p class="text-xs sm:text-sm text-white/50 font-light">Expert et conseillère en crédit hypothécaire</p>
+                            <h3 class="text-xs sm:text-lg lg:text-xl font-light text-white mb-1">Deniz Aktas</h3>
+                            <p class="text-[10px] sm:text-sm text-white/50 font-light leading-tight">Crédit hypothécaire</p>
                         </div>
                     </div>
                 </div>
@@ -76,7 +82,7 @@ defineEmits(['openQuoteModal']);
                         alt="Équipe Adiden Finances"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-adiden/60 via-adiden/20 to-transparent"></div>
 
                     <!-- Texte overlay -->
                     <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-12">
@@ -86,7 +92,7 @@ defineEmits(['openQuoteModal']);
                             </p>
                             <button
                                 @click="$emit('openQuoteModal')"
-                                class="inline-flex items-center gap-2 sm:gap-3 bg-white text-black px-5 py-3 sm:px-8 sm:py-4 rounded-full font-light text-sm sm:text-base lg:text-lg tracking-wide hover:bg-white/90 transition-all duration-300 group"
+                                class="inline-flex items-center gap-2 sm:gap-3 bg-white text-adiden px-5 py-3 sm:px-8 sm:py-4 rounded-full font-light text-sm sm:text-base lg:text-lg tracking-wide hover:bg-white/90 transition-all duration-300 group"
                             >
                                 <span>Rencontrer l'équipe</span>
                                 <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">

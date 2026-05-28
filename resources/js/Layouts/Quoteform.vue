@@ -101,15 +101,26 @@ const showSpecificFields = computed(() => {
     return formData.value.type !== '';
 });
 
+const scrollFormTop = () => {
+    // Scrolle le modal en haut quand on change d'étape (mobile UX)
+    requestAnimationFrame(() => {
+        const modalScroll = document.querySelector('.fixed.inset-0.z-\\[100\\]');
+        if (modalScroll) modalScroll.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+};
+
 const nextStep = () => {
     if (currentStep.value === 1 && formData.value.type) {
         currentStep.value = 2;
+        scrollFormTop();
     }
 };
 
 const previousStep = () => {
     if (currentStep.value > 1) {
         currentStep.value--;
+        scrollFormTop();
     }
 };
 
@@ -232,21 +243,21 @@ const handleSubmit = async () => {
             <div class="flex items-center">
                 <div
                     class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full transition-all duration-300"
-                    :class="currentStep >= 1 ? 'bg-black text-white' : 'bg-gray-200 text-gray-400'"
+                    :class="currentStep >= 1 ? 'bg-adiden text-white' : 'bg-gray-200 text-gray-400'"
                 >
                     <span class="font-light text-sm sm:text-base">1</span>
                 </div>
-                <span class="ml-1.5 sm:ml-2 text-xs sm:text-sm font-light" :class="currentStep >= 1 ? 'text-black' : 'text-gray-400'">Type</span>
+                <span class="ml-1.5 sm:ml-2 text-xs sm:text-sm font-light" :class="currentStep >= 1 ? 'text-adiden' : 'text-gray-400'">Type</span>
             </div>
-            <div class="w-8 sm:w-12 h-0.5" :class="currentStep >= 2 ? 'bg-black' : 'bg-gray-200'"></div>
+            <div class="w-8 sm:w-12 h-0.5" :class="currentStep >= 2 ? 'bg-adiden' : 'bg-gray-200'"></div>
             <div class="flex items-center">
                 <div
                     class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full transition-all duration-300"
-                    :class="currentStep >= 2 ? 'bg-black text-white' : 'bg-gray-200 text-gray-400'"
+                    :class="currentStep >= 2 ? 'bg-adiden text-white' : 'bg-gray-200 text-gray-400'"
                 >
                     <span class="font-light text-sm sm:text-base">2</span>
                 </div>
-                <span class="ml-1.5 sm:ml-2 text-xs sm:text-sm font-light" :class="currentStep >= 2 ? 'text-black' : 'text-gray-400'">Détails</span>
+                <span class="ml-1.5 sm:ml-2 text-xs sm:text-sm font-light" :class="currentStep >= 2 ? 'text-adiden' : 'text-gray-400'">Détails</span>
             </div>
         </div>
 
@@ -261,18 +272,18 @@ const handleSubmit = async () => {
                             :key="type.value"
                             type="button"
                             @click="formData.type = type.value; nextStep()"
-                            class="group relative p-4 sm:p-6 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 hover:border-black hover:shadow-lg text-left active:scale-95"
-                            :class="formData.type === type.value ? 'border-black bg-black/5' : 'border-gray-200'"
+                            class="group relative p-4 sm:p-6 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 hover:border-adiden hover:shadow-lg text-left active:scale-95"
+                            :class="formData.type === type.value ? 'border-adiden bg-adiden/5' : 'border-gray-200'"
                         >
                             <div class="flex items-center gap-3 sm:gap-4">
                                 <span class="text-2xl sm:text-3xl flex-shrink-0">{{ type.icon }}</span>
                                 <div>
-                                    <h3 class="font-light text-base sm:text-lg text-gray-900 group-hover:text-black">{{ type.label }}</h3>
+                                    <h3 class="font-light text-base sm:text-lg text-gray-900 group-hover:text-adiden">{{ type.label }}</h3>
                                 </div>
                             </div>
                             <div
                                 v-if="formData.type === type.value"
-                                class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-5 h-5 sm:w-6 sm:h-6 bg-black rounded-full flex items-center justify-center"
+                                class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-5 h-5 sm:w-6 sm:h-6 bg-adiden rounded-full flex items-center justify-center"
                             >
                                 <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
@@ -303,7 +314,9 @@ const handleSubmit = async () => {
                                 v-model="formData.nom"
                                 type="text"
                                 required
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                autocomplete="family-name"
+                                autocapitalize="words"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="Dupont"
                             />
                         </div>
@@ -315,7 +328,9 @@ const handleSubmit = async () => {
                                 v-model="formData.prenom"
                                 type="text"
                                 required
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                autocomplete="given-name"
+                                autocapitalize="words"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="Jean"
                             />
                         </div>
@@ -330,7 +345,11 @@ const handleSubmit = async () => {
                                 v-model="formData.email"
                                 type="email"
                                 required
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                autocomplete="email"
+                                inputmode="email"
+                                autocapitalize="none"
+                                spellcheck="false"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="jean.dupont@email.com"
                             />
                         </div>
@@ -339,7 +358,9 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.telephone"
                                 type="tel"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                autocomplete="tel"
+                                inputmode="tel"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="+32 XXX XX XX XX"
                             />
                         </div>
@@ -350,7 +371,8 @@ const handleSubmit = async () => {
                         <input
                             v-model="formData.adresse"
                             type="text"
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                            autocomplete="street-address"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                             placeholder="Rue de la Paix, 123"
                         />
                     </div>
@@ -361,7 +383,9 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.codePostal"
                                 type="text"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                autocomplete="postal-code"
+                                inputmode="numeric"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="1000"
                             />
                         </div>
@@ -370,7 +394,9 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.ville"
                                 type="text"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                autocomplete="address-level2"
+                                autocapitalize="words"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="Bruxelles"
                             />
                         </div>
@@ -381,8 +407,8 @@ const handleSubmit = async () => {
                         <input
                             v-model="formData.dateNaissance"
                             type="date"
-                           
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                            autocomplete="bday"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                         />
                     </div>
                 </div>
@@ -401,7 +427,7 @@ const handleSubmit = async () => {
                                 v-model="formData.marqueVehicule"
                                 type="text"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="ex: Volkswagen"
                             />
                         </div>
@@ -411,7 +437,7 @@ const handleSubmit = async () => {
                                 v-model="formData.modeleVehicule"
                                 type="text"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="ex: Golf"
                             />
                         </div>
@@ -426,7 +452,7 @@ const handleSubmit = async () => {
                                
                                 min="1990"
                                 :max="new Date().getFullYear() + 1"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="2020"
                             />
                         </div>
@@ -435,7 +461,7 @@ const handleSubmit = async () => {
                             <select
                                 v-model="formData.carburant"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                             >
                                 <option value="">Sélectionner</option>
                                 <option>Essence</option>
@@ -450,7 +476,7 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.puissance"
                                 type="number"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="110"
                             />
                         </div>
@@ -462,7 +488,7 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.kilometrage"
                                 type="number"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="50000"
                             />
                         </div>
@@ -471,7 +497,7 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.valeurVehicule"
                                 type="number"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="15000"
                             />
                         </div>
@@ -482,7 +508,7 @@ const handleSubmit = async () => {
                         <select
                             v-model="formData.usageVehicule"
                            
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                         >
                             <option value="">Sélectionner</option>
                             <option>Privé uniquement</option>
@@ -506,7 +532,7 @@ const handleSubmit = async () => {
                             <select
                                 v-model="formData.typeLogement"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                             >
                                 <option value="">Sélectionner</option>
                                 <option>Maison</option>
@@ -521,7 +547,7 @@ const handleSubmit = async () => {
                                 v-model="formData.surfaceLogement"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="100"
                             />
                         </div>
@@ -535,7 +561,7 @@ const handleSubmit = async () => {
                                 type="number"
                                 min="1800"
                                 :max="new Date().getFullYear()"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="1990"
                             />
                         </div>
@@ -545,7 +571,7 @@ const handleSubmit = async () => {
                                 v-model="formData.nombrePieces"
                                 type="number"
                                 min="1"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="4"
                             />
                         </div>
@@ -556,7 +582,7 @@ const handleSubmit = async () => {
                         <input
                             v-model="formData.valeurMobilier"
                             type="number"
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                             placeholder="30000"
                         />
                     </div>
@@ -565,7 +591,7 @@ const handleSubmit = async () => {
                         <label class="block text-sm font-medium text-gray-700 mb-2">Système de sécurité</label>
                         <select
                             v-model="formData.systemeSecurite"
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                         >
                             <option value="">Aucun</option>
                             <option>Alarme</option>
@@ -590,7 +616,7 @@ const handleSubmit = async () => {
                                 v-model="formData.montantCapital"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="100000"
                             />
                         </div>
@@ -601,7 +627,7 @@ const handleSubmit = async () => {
                                 type="number"
                                
                                 min="1"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="20"
                             />
                         </div>
@@ -612,7 +638,7 @@ const handleSubmit = async () => {
                         <select
                             v-model="formData.objectifAssurance"
                            
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                         >
                             <option value="">Sélectionner</option>
                             <option>Protection familiale</option>
@@ -628,7 +654,7 @@ const handleSubmit = async () => {
                         <textarea
                             v-model="formData.beneficiaires"
                             rows="2"
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white resize-none"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white resize-none"
                             placeholder="Conjoint, enfants..."
                         ></textarea>
                     </div>
@@ -648,7 +674,7 @@ const handleSubmit = async () => {
                                 v-model="formData.montantEmprunt"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="200000"
                             />
                         </div>
@@ -660,7 +686,7 @@ const handleSubmit = async () => {
                                
                                 min="1"
                                 max="30"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="20"
                             />
                         </div>
@@ -673,7 +699,7 @@ const handleSubmit = async () => {
                                 v-model="formData.apportPersonnel"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="50000"
                             />
                         </div>
@@ -683,7 +709,7 @@ const handleSubmit = async () => {
                                 v-model="formData.valeurBien"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="250000"
                             />
                         </div>
@@ -694,7 +720,7 @@ const handleSubmit = async () => {
                         <select
                             v-model="formData.typeAcquisition"
                            
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                         >
                             <option value="">Sélectionner</option>
                             <option>Résidence principale</option>
@@ -711,7 +737,7 @@ const handleSubmit = async () => {
                             <select
                                 v-model="formData.situationProfessionnelle"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                             >
                                 <option value="">Sélectionner</option>
                                 <option>CDI</option>
@@ -727,7 +753,7 @@ const handleSubmit = async () => {
                                 v-model="formData.revenuMensuel"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="3000"
                             />
                         </div>
@@ -748,7 +774,7 @@ const handleSubmit = async () => {
                                 v-model="formData.montantSouhaite"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="15000"
                             />
                         </div>
@@ -760,7 +786,7 @@ const handleSubmit = async () => {
                                
                                 min="6"
                                 max="120"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="48"
                             />
                         </div>
@@ -771,7 +797,7 @@ const handleSubmit = async () => {
                         <select
                             v-model="formData.objetCredit"
                            
-                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white appearance-none"
+                            class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white appearance-none"
                         >
                             <option value="">Sélectionner</option>
                             <option>Véhicule</option>
@@ -790,7 +816,7 @@ const handleSubmit = async () => {
                                 v-model="formData.revenuMensuel"
                                 type="number"
                                
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="2500"
                             />
                         </div>
@@ -799,7 +825,7 @@ const handleSubmit = async () => {
                             <input
                                 v-model="formData.chargesMensuelles"
                                 type="number"
-                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white"
+                                class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white"
                                 placeholder="800"
                             />
                         </div>
@@ -819,17 +845,20 @@ const handleSubmit = async () => {
                     <textarea
                         v-model="formData.message"
                         rows="4"
-                        class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent font-light bg-white resize-none"
+                        class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-adiden focus:border-transparent font-light bg-white resize-none"
                         placeholder="Ajoutez toute information complémentaire qui pourrait nous aider à mieux répondre à votre demande..."
                     ></textarea>
                 </div>
 
-                <!-- Boutons d'action -->
-                <div class="flex flex-col sm:flex-row gap-3 pt-2 sm:pt-4">
+                <!-- Boutons d'action (sticky bottom sur mobile) -->
+                <div
+                    class="sticky bottom-0 -mx-5 sm:mx-0 px-5 sm:px-0 py-4 sm:py-0 bg-white sm:bg-transparent border-t border-gray-100 sm:border-0 flex flex-col sm:flex-row gap-3 sm:pt-4 z-10"
+                    style="padding-bottom: calc(1rem + env(safe-area-inset-bottom));"
+                >
                     <button
                         type="button"
                         @click="previousStep"
-                        class="flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-300 text-gray-700 rounded-full font-light hover:bg-gray-50 transition-all duration-300 active:scale-95"
+                        class="order-2 sm:order-1 flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-300 text-gray-700 rounded-full font-light hover:bg-gray-50 transition-all duration-300 active:scale-95 min-h-[48px]"
                     >
                         <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -839,7 +868,7 @@ const handleSubmit = async () => {
 
                     <button
                         type="submit"
-                        class="flex-1 bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-light text-base sm:text-lg tracking-wide hover:bg-gray-900 transition-all duration-300 transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-black/20 group"
+                        class="order-1 sm:order-2 flex-1 bg-adiden text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-light text-base sm:text-lg tracking-wide hover:bg-adiden-darker transition-all duration-300 transform sm:hover:scale-[1.02] active:scale-95 shadow-lg shadow-adiden/20 group min-h-[52px]"
                     >
                         <span class="flex items-center justify-center gap-2">
                             Envoyer ma demande

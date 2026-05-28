@@ -20,9 +20,9 @@
             <div class="grid md:grid-cols-3 gap-8 md:gap-12">
                 <!-- Promise 1: Simple -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 md:p-10 border border-gray-100 hover:border-black/20 transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2">
+                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 md:p-10 border border-gray-100 hover:border-adiden/20 transition-all duration-500 hover:shadow-2xl hover:shadow-adiden/5 hover:-translate-y-2">
                         <!-- Icon -->
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-adiden rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
@@ -37,15 +37,15 @@
                         </p>
 
                         <!-- Decorative element -->
-                        <div class="absolute -bottom-2 -right-2 w-24 h-24 bg-black/5 rounded-full blur-2xl group-hover:bg-black/10 transition-all duration-500"></div>
+                        <div class="absolute -bottom-2 -right-2 w-24 h-24 bg-adiden/5 rounded-full blur-2xl group-hover:bg-adiden/10 transition-all duration-500"></div>
                     </div>
                 </div>
 
                 <!-- Promise 2: Rapide -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 md:p-10 border border-gray-100 hover:border-black/20 transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2">
+                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 md:p-10 border border-gray-100 hover:border-adiden/20 transition-all duration-500 hover:shadow-2xl hover:shadow-adiden/5 hover:-translate-y-2">
                         <!-- Icon -->
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-adiden rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                             </svg>
@@ -60,15 +60,15 @@
                         </p>
 
                         <!-- Decorative element -->
-                        <div class="absolute -bottom-2 -right-2 w-24 h-24 bg-black/5 rounded-full blur-2xl group-hover:bg-black/10 transition-all duration-500"></div>
+                        <div class="absolute -bottom-2 -right-2 w-24 h-24 bg-adiden/5 rounded-full blur-2xl group-hover:bg-adiden/10 transition-all duration-500"></div>
                     </div>
                 </div>
 
                 <!-- Promise 3: À Vos Côtés -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 md:p-10 border border-gray-100 hover:border-black/20 transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2">
+                    <div class="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 md:p-10 border border-gray-100 hover:border-adiden/20 transition-all duration-500 hover:shadow-2xl hover:shadow-adiden/5 hover:-translate-y-2">
                         <!-- Icon -->
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-adiden rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                             </svg>
@@ -83,7 +83,7 @@
                         </p>
 
                         <!-- Decorative element -->
-                        <div class="absolute -bottom-2 -right-2 w-24 h-24 bg-black/5 rounded-full blur-2xl group-hover:bg-black/10 transition-all duration-500"></div>
+                        <div class="absolute -bottom-2 -right-2 w-24 h-24 bg-adiden/5 rounded-full blur-2xl group-hover:bg-adiden/10 transition-all duration-500"></div>
                     </div>
                 </div>
             </div>

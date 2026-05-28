@@ -1,5 +1,14 @@
 <script setup>
+import { ref } from 'vue';
+
 defineEmits(['openQuoteModal']);
+
+// Pause animation au tap mobile
+const pausedSliders = ref({ assurances: false, credit: false });
+
+const toggleSlider = (key) => {
+    pausedSliders.value[key] = !pausedSliders.value[key];
+};
 
 // Partenaires organisés par catégorie
 const partners = {
@@ -60,17 +69,19 @@ const partners = {
 }
 
 .animate-scroll {
-    animation: scroll 40s linear infinite;
+    animation: scroll 22s linear infinite;
     will-change: transform;
 }
 
 .animate-scroll-slow {
-    animation: scroll-slow 45s linear infinite;
+    animation: scroll-slow 26s linear infinite;
     will-change: transform;
 }
 
-/* Pause l'animation pendant le scroll tactile */
-.overflow-x-auto:active .slider-track,
+/* Pause l'animation au survol/touch (état stable géré par Vue) */
+.slider-paused .slider-track {
+    animation-play-state: paused;
+}
 .overflow-x-auto:hover .slider-track {
     animation-play-state: paused;
 }
@@ -109,7 +120,7 @@ const partners = {
                 </div>
 
                 <!-- Mobile: Slider -->
-                <div class="md:hidden relative">
+                <div class="md:hidden relative" :class="{ 'slider-paused': pausedSliders.assurances }" @click="toggleSlider('assurances')">
                     <div class="overflow-x-auto scrollbar-hide scroll-smooth overscroll-x-contain">
                         <div class="slider-track flex gap-4 animate-scroll px-4">
                             <!-- Duplicated for infinite scroll -->
@@ -121,6 +132,8 @@ const partners = {
                                 <img
                                     :src="partner.logo"
                                     :alt="partner.name"
+                                    loading="lazy"
+                                    decoding="async"
                                     class="max-w-full max-h-full object-contain pointer-events-none"
                                     @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                                 />
@@ -143,6 +156,8 @@ const partners = {
                         <img
                             :src="partner.logo"
                             :alt="partner.name"
+                            loading="lazy"
+                            decoding="async"
                             class="max-w-full max-h-full object-contain transition-all duration-300 group-hover:scale-105"
                             @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                         />
@@ -159,7 +174,7 @@ const partners = {
                 </div>
 
                 <!-- Mobile: Slider -->
-                <div class="md:hidden relative">
+                <div class="md:hidden relative" :class="{ 'slider-paused': pausedSliders.credit }" @click="toggleSlider('credit')">
                     <div class="overflow-x-auto scrollbar-hide scroll-smooth overscroll-x-contain">
                         <div class="slider-track flex gap-4 animate-scroll-slow px-4">
                             <!-- Duplicated for infinite scroll -->
@@ -171,6 +186,8 @@ const partners = {
                                 <img
                                     :src="partner.logo"
                                     :alt="partner.name"
+                                    loading="lazy"
+                                    decoding="async"
                                     class="max-w-full max-h-full object-contain pointer-events-none"
                                     @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                                 />
@@ -193,6 +210,8 @@ const partners = {
                         <img
                             :src="partner.logo"
                             :alt="partner.name"
+                            loading="lazy"
+                            decoding="async"
                             class="max-w-full max-h-full object-contain transition-all duration-300 group-hover:scale-105"
                             @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                         />
@@ -218,6 +237,8 @@ const partners = {
                         <img
                             :src="partner.logo"
                             :alt="partner.name"
+                            loading="lazy"
+                            decoding="async"
                             class="max-w-full max-h-full object-contain"
                             @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                         />

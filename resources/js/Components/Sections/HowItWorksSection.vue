@@ -27,14 +27,14 @@
                     <div class="relative group">
                         <!-- Step Number -->
                         <div class="relative mb-8">
-                            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-black to-gray-800 rounded-full text-white text-2xl font-light shadow-xl shadow-black/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-adiden to-adiden rounded-full text-white text-2xl font-light shadow-xl shadow-adiden/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
                                 01
                             </div>
-                            <div class="absolute inset-0 bg-black/10 rounded-full blur-xl"></div>
+                            <div class="absolute inset-0 bg-adiden/10 rounded-full blur-xl"></div>
                         </div>
 
                         <!-- Icon -->
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-6 group-hover:bg-black group-hover:scale-110 transition-all duration-500">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-6 group-hover:bg-adiden group-hover:scale-110 transition-all duration-500">
                             <svg class="w-8 h-8 text-gray-900 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
@@ -64,14 +64,14 @@
                     <div class="relative group">
                         <!-- Step Number -->
                         <div class="relative mb-8">
-                            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-black to-gray-800 rounded-full text-white text-2xl font-light shadow-xl shadow-black/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-adiden to-adiden rounded-full text-white text-2xl font-light shadow-xl shadow-adiden/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
                                 02
                             </div>
-                            <div class="absolute inset-0 bg-black/10 rounded-full blur-xl"></div>
+                            <div class="absolute inset-0 bg-adiden/10 rounded-full blur-xl"></div>
                         </div>
 
                         <!-- Icon -->
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-6 group-hover:bg-black group-hover:scale-110 transition-all duration-500">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-6 group-hover:bg-adiden group-hover:scale-110 transition-all duration-500">
                             <svg class="w-8 h-8 text-gray-900 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>
                             </svg>
@@ -101,14 +101,14 @@
                     <div class="relative group">
                         <!-- Step Number -->
                         <div class="relative mb-8">
-                            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-black to-gray-800 rounded-full text-white text-2xl font-light shadow-xl shadow-black/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-adiden to-adiden rounded-full text-white text-2xl font-light shadow-xl shadow-adiden/20 group-hover:scale-110 transition-transform duration-500 relative z-10">
                                 03
                             </div>
-                            <div class="absolute inset-0 bg-black/10 rounded-full blur-xl"></div>
+                            <div class="absolute inset-0 bg-adiden/10 rounded-full blur-xl"></div>
                         </div>
 
                         <!-- Icon -->
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-6 group-hover:bg-black group-hover:scale-110 transition-all duration-500">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-2xl mb-6 group-hover:bg-adiden group-hover:scale-110 transition-all duration-500">
                             <svg class="w-8 h-8 text-gray-900 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                             </svg>

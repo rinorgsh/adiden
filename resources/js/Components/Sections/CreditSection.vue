@@ -65,7 +65,7 @@
                     </ul>
 
                     <!-- CTA Button -->
-                    <button class="group inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-light text-lg hover:bg-gray-900 transition-all duration-300 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 hover:scale-105">
+                    <button class="group inline-flex items-center gap-3 bg-adiden text-white px-8 py-4 rounded-full font-light text-lg hover:bg-adiden-darker transition-all duration-300 shadow-lg shadow-adiden/20 hover:shadow-xl hover:shadow-adiden/30 hover:scale-105">
                         <span>Simuler Mon Crédit</span>
                         <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -77,7 +77,7 @@
                 <div class="order-1 lg:order-2 relative">
                     <div class="relative">
                         <!-- Main Illustration Card -->
-                        <div class="relative bg-gradient-to-br from-gray-900 to-black rounded-3xl p-12 shadow-2xl">
+                        <div class="relative bg-gradient-to-br from-adiden to-adiden rounded-3xl p-12 shadow-2xl">
                             <!-- House Icon -->
                             <div class="relative z-10">
                                 <svg class="w-full h-auto text-white opacity-10" viewBox="0 0 200 200" fill="currentColor">
@@ -103,8 +103,8 @@
                         </div>
 
                         <!-- Decorative Elements -->
-                        <div class="absolute -top-8 -right-8 w-32 h-32 bg-black/5 rounded-full blur-2xl"></div>
-                        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-black/5 rounded-full blur-2xl"></div>
+                        <div class="absolute -top-8 -right-8 w-32 h-32 bg-adiden/5 rounded-full blur-2xl"></div>
+                        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-adiden/5 rounded-full blur-2xl"></div>
                     </div>
 
                     <!-- Stats -->

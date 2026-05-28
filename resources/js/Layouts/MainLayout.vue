@@ -58,6 +58,9 @@ const scrollToSection = (sectionId) => {
     closeMobileMenu();
 };
 
+// Sticky CTA mobile : visible une fois le hero scrollé
+const showMobileSticky = ref(false);
+
 // Vérifier si le background est sombre
 const checkBackgroundColor = () => {
     const header = document.querySelector('header');
@@ -69,6 +72,8 @@ const checkBackgroundColor = () => {
 
     // Détecter le scroll
     isScrolled.value = window.scrollY > 50;
+    // Sticky CTA mobile : déclenché après ~70% du viewport (sortie hero)
+    showMobileSticky.value = window.scrollY > window.innerHeight * 0.7;
 
     for (const section of sections) {
         const rect = section.getBoundingClientRect();
@@ -82,13 +87,9 @@ const checkBackgroundColor = () => {
             }
 
             // Background sombre ou clair
-            if (classList.includes('bg-black') ||
-                classList.includes('bg-gray-900') ||
-                classList.includes('bg-gray-800') ||
+            if (classList.includes('bg-adiden') ||
                 classList.includes('bg-slate-900') ||
-                classList.includes('from-gray-900') ||
-                classList.includes('from-gray-800') ||
-                classList.includes('from-black')) {
+                classList.includes('from-adiden')) {
                 isDarkBackground.value = true;
             } else if (classList.includes('bg-white') ||
                        classList.includes('bg-gray-50') ||
@@ -109,42 +110,42 @@ const navClasses = computed(() => {
     
     if (isScrolled.value) {
         return `${base} ${isDarkBackground.value 
-            ? 'bg-white/95 border border-white/30 shadow-2xl shadow-black/10' 
-            : 'bg-black/95 border border-black/30 shadow-2xl shadow-white/10'}`;
+            ? 'bg-white/95 border border-white/30 shadow-2xl shadow-adiden/10' 
+            : 'bg-adiden/95 border border-adiden/30 shadow-2xl shadow-white/10'}`;
     }
     
     return `${base} ${isDarkBackground.value
         ? 'bg-white/10 border border-white/20'
-        : 'bg-black/10 border border-black/20'}`;
+        : 'bg-adiden/10 border border-adiden/20'}`;
 });
 
 const textClasses = computed(() => {
     if (isScrolled.value) {
         return isDarkBackground.value 
-            ? 'text-black hover:text-black/60' 
+            ? 'text-adiden hover:text-adiden/60' 
             : 'text-white hover:text-white/60';
     }
     return isDarkBackground.value
         ? 'text-white hover:text-white/70'
-        : 'text-black hover:text-black/70';
+        : 'text-adiden hover:text-adiden/70';
 });
 
 const buttonClasses = computed(() => {
     if (isScrolled.value) {
         return isDarkBackground.value
-            ? 'bg-black text-white hover:bg-black/90 shadow-lg shadow-black/20'
-            : 'bg-white text-black hover:bg-white/90 shadow-lg shadow-white/20';
+            ? 'bg-adiden text-white hover:bg-adiden-darker shadow-lg shadow-adiden/20'
+            : 'bg-white text-adiden hover:bg-white/90 shadow-lg shadow-white/20';
     }
     return isDarkBackground.value
-        ? 'bg-white text-black hover:bg-white/90'
-        : 'bg-black text-white hover:bg-black/90';
+        ? 'bg-white text-adiden hover:bg-white/90'
+        : 'bg-adiden text-white hover:bg-adiden-darker';
 });
 
 const mobileIconClasses = computed(() => {
     if (isScrolled.value) {
-        return isDarkBackground.value ? 'text-black' : 'text-white';
+        return isDarkBackground.value ? 'text-adiden' : 'text-white';
     }
-    return isDarkBackground.value ? 'text-white' : 'text-black';
+    return isDarkBackground.value ? 'text-white' : 'text-adiden';
 });
 
 const logoSrc = computed(() => {
@@ -197,7 +198,7 @@ onUnmounted(() => {
                             <span class="relative z-10">Assurances</span>
                             <span
                                 class="absolute inset-x-0 -bottom-1 h-0.5 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"
-                                :class="isDarkBackground && !isScrolled ? 'bg-white' : 'bg-black'"
+                                :class="isDarkBackground && !isScrolled ? 'bg-white' : 'bg-adiden'"
                             ></span>
                         </a>
                         <a
@@ -209,7 +210,7 @@ onUnmounted(() => {
                             <span class="relative z-10">Crédit</span>
                             <span
                                 class="absolute inset-x-0 -bottom-1 h-0.5 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"
-                                :class="isDarkBackground && !isScrolled ? 'bg-white' : 'bg-black'"
+                                :class="isDarkBackground && !isScrolled ? 'bg-white' : 'bg-adiden'"
                             ></span>
                         </a>
                         <a
@@ -221,7 +222,7 @@ onUnmounted(() => {
                             <span class="relative z-10">À propos</span>
                             <span
                                 class="absolute inset-x-0 -bottom-1 h-0.5 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"
-                                :class="isDarkBackground && !isScrolled ? 'bg-white' : 'bg-black'"
+                                :class="isDarkBackground && !isScrolled ? 'bg-white' : 'bg-adiden'"
                             ></span>
                         </a>
                     </div>
@@ -295,7 +296,7 @@ onUnmounted(() => {
         >
             <div
                 v-if="showMobileMenu"
-                class="fixed inset-0 bg-black/60 backdrop-blur-md z-40 lg:hidden"
+                class="fixed inset-0 bg-adiden/60 backdrop-blur-md z-40 lg:hidden"
                 @click="closeMobileMenu"
             ></div>
         </Transition>
@@ -339,7 +340,7 @@ onUnmounted(() => {
                             @click.prevent="scrollToSection('#assurances')"
                             class="flex items-center justify-between group px-4 py-4 rounded-xl hover:bg-gray-50 transition-all duration-300"
                         >
-                            <span class="text-lg font-light text-gray-900 group-hover:text-black transition-colors">
+                            <span class="text-lg font-light text-gray-900 group-hover:text-adiden transition-colors">
                                 Assurances
                             </span>
                             <svg class="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -352,7 +353,7 @@ onUnmounted(() => {
                             @click.prevent="scrollToSection('#credit')"
                             class="flex items-center justify-between group px-4 py-4 rounded-xl hover:bg-gray-50 transition-all duration-300"
                         >
-                            <span class="text-lg font-light text-gray-900 group-hover:text-black transition-colors">
+                            <span class="text-lg font-light text-gray-900 group-hover:text-adiden transition-colors">
                                 Crédit
                             </span>
                             <svg class="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -365,7 +366,7 @@ onUnmounted(() => {
                             @click.prevent="scrollToSection('#apropos')"
                             class="flex items-center justify-between group px-4 py-4 rounded-xl hover:bg-gray-50 transition-all duration-300"
                         >
-                            <span class="text-lg font-light text-gray-900 group-hover:text-black transition-colors">
+                            <span class="text-lg font-light text-gray-900 group-hover:text-adiden transition-colors">
                                 À propos
                             </span>
                             <svg class="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -378,7 +379,7 @@ onUnmounted(() => {
                     <div class="p-6 border-t border-gray-100 space-y-3">
                         <a
                             href="tel:+32489623990"
-                            class="w-full flex items-center justify-center gap-2 bg-white text-black border-2 border-black px-6 py-4 rounded-full font-light tracking-wide hover:bg-gray-50 transition-all duration-300"
+                            class="w-full flex items-center justify-center gap-2 bg-white text-adiden border-2 border-adiden px-6 py-4 rounded-full font-light tracking-wide hover:bg-gray-50 transition-all duration-300"
                         >
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
@@ -388,7 +389,7 @@ onUnmounted(() => {
 
                         <button
                             @click="openQuoteModal(); closeMobileMenu()"
-                            class="w-full flex items-center justify-center gap-2 bg-black text-white px-6 py-4 rounded-full font-light tracking-wide hover:bg-gray-900 transition-all duration-300 shadow-lg shadow-black/10"
+                            class="w-full flex items-center justify-center gap-2 bg-adiden text-white px-6 py-4 rounded-full font-light tracking-wide hover:bg-adiden-darker transition-all duration-300 shadow-lg shadow-adiden/10"
                         >
                             <span>Demander un devis</span>
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -405,6 +406,44 @@ onUnmounted(() => {
             <slot />
         </main>
 
+        <!-- Sticky CTA Bar (mobile uniquement, après scroll hero) -->
+        <Transition
+            enter-active-class="transition-all duration-300 ease-out"
+            enter-from-class="opacity-0 translate-y-full"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition-all duration-200 ease-in"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 translate-y-full"
+        >
+            <div
+                v-show="showMobileSticky && !showMobileMenu && !showQuoteModal"
+                class="fixed bottom-0 inset-x-0 z-40 lg:hidden"
+                style="padding-bottom: env(safe-area-inset-bottom);"
+            >
+                <div class="bg-white/95 backdrop-blur-md border-t border-adiden/10 shadow-2xl shadow-adiden/20 px-3 py-3 flex gap-2">
+                    <a
+                        href="tel:+32489623990"
+                        class="flex items-center justify-center gap-2 flex-1 border-2 border-adiden/10 text-adiden px-3 py-3 rounded-full font-light text-sm tracking-wide active:bg-adiden/5 transition-all touch-manipulation min-h-[48px]"
+                        aria-label="Appeler Adiden Finances"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                        </svg>
+                        <span>Appeler</span>
+                    </a>
+                    <button
+                        @click="openQuoteModal"
+                        class="flex items-center justify-center gap-2 flex-[1.4] bg-adiden text-white px-3 py-3 rounded-full font-light text-sm tracking-wide active:bg-adiden-darker transition-all touch-manipulation min-h-[48px] shadow-lg shadow-adiden/20"
+                    >
+                        <span>Demander un devis</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </Transition>
+
         <!-- Quote Modal -->
         <Teleport to="body">
             <Transition
@@ -417,27 +456,31 @@ onUnmounted(() => {
             >
                 <div
                     v-if="showQuoteModal"
-                    class="fixed inset-0 z-[100] overflow-y-auto"
+                    class="fixed inset-0 z-[100] overflow-y-auto overscroll-contain"
                     @click.self="closeQuoteModal"
                 >
-                    <div class="flex min-h-screen items-center justify-center p-4">
+                    <div class="flex min-h-full sm:items-center justify-center sm:p-4">
                         <!-- Backdrop -->
-                        <div class="fixed inset-0 bg-black/70 backdrop-blur-md" @click="closeQuoteModal"></div>
+                        <div class="fixed inset-0 bg-adiden/70 backdrop-blur-md" @click="closeQuoteModal"></div>
 
                         <!-- Modal -->
                         <Transition
                             enter-active-class="transition-all duration-500 ease-out"
-                            enter-from-class="opacity-0 scale-95 translate-y-4"
-                            enter-to-class="opacity-100 scale-100 translate-y-0"
+                            enter-from-class="opacity-0 sm:scale-95 translate-y-4"
+                            enter-to-class="opacity-100 sm:scale-100 translate-y-0"
                             leave-active-class="transition-all duration-300 ease-in"
-                            leave-from-class="opacity-100 scale-100 translate-y-0"
-                            leave-to-class="opacity-0 scale-95 translate-y-4"
+                            leave-from-class="opacity-100 sm:scale-100 translate-y-0"
+                            leave-to-class="opacity-0 sm:scale-95 translate-y-4"
                         >
-                            <div v-if="showQuoteModal" class="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-8 md:p-12 transform max-h-[90vh] overflow-y-auto">
+                            <div
+                                v-if="showQuoteModal"
+                                class="relative bg-white sm:rounded-3xl shadow-2xl max-w-3xl w-full min-h-screen sm:min-h-0 sm:max-h-[90vh] transform sm:overflow-y-auto"
+                                style="padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom);"
+                            >
                                 <!-- Close button -->
                                 <button
                                     @click="closeQuoteModal"
-                                    class="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-300 z-10"
+                                    class="sticky sm:absolute top-4 sm:top-6 right-4 sm:right-6 ml-auto p-2 text-gray-400 hover:text-gray-600 bg-white/90 sm:bg-transparent hover:bg-gray-100 rounded-full transition-all duration-300 z-20 min-w-[44px] min-h-[44px] flex items-center justify-center"
                                     aria-label="Fermer"
                                 >
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -445,18 +488,20 @@ onUnmounted(() => {
                                     </svg>
                                 </button>
 
-                                <!-- Content -->
-                                <div class="mb-8">
-                                    <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-6">
-                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                        </svg>
+                                <div class="px-5 pb-5 sm:p-8 md:p-12 sm:pt-12 -mt-12 sm:mt-0">
+                                    <!-- Content -->
+                                    <div class="mb-6 sm:mb-8">
+                                        <div class="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-adiden rounded-xl sm:rounded-2xl mb-4 sm:mb-6">
+                                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                        </div>
+                                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-light mb-2 sm:mb-3 text-gray-900">Demande de devis</h2>
+                                        <p class="text-sm sm:text-base text-gray-600 font-light">Remplissez ce formulaire pour recevoir votre devis personnalisé sous 24h</p>
                                     </div>
-                                    <h2 class="text-3xl md:text-4xl font-light mb-3 text-gray-900">Demande de devis</h2>
-                                    <p class="text-gray-600 font-light">Remplissez ce formulaire détaillé pour recevoir votre devis personnalisé sous 24h</p>
-                                </div>
 
-                                <QuoteForm @close="closeQuoteModal" />
+                                    <QuoteForm @close="closeQuoteModal" />
+                                </div>
                             </div>
                         </Transition>
                     </div>
