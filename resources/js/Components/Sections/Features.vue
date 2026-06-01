@@ -22,17 +22,16 @@ const partners = {
         { name: 'ARAG', logo: '/images/arag.png' }
     ],
     credit: [
-        { name: 'BNP Paribas Credit Broker', logo: '/images/bnpbrokers.png' },
-        { name: 'Elantis', logo: '/images/elantis.png' },
+        { name: 'BNP Paribas Credit Broker', logo: '/images/bnpbrokers.png', pdf: '/documents/bnp.pdf' },
+        { name: 'Elantis', logo: '/images/elantis.png', pdf: '/documents/elantis.pdf' },
         { name: 'BankB', logo: '/images/bankb.webp' },
         { name: 'Europabank', logo: '/images/eurobank.jpg' },
         { name: 'AlphaCredit', logo: '/images/alpha.jpg' },
         { name: 'Cofidis', logo: '/images/cofidis.png' },
-        { name: 'Creafin', logo: '/images/creafin.png' },
-        { name: 'Record Credits', logo: '/images/records.png' }
+        { name: 'Creafin', logo: '/images/creafin.png', pdf: '/documents/creafin.pdf' },
+        { name: 'Record Credits', logo: '/images/records.png', pdf: '/documents/record.pdf' }
     ],
     leasing: [
-        { name: 'Fina Lease', logo: '/images/finallease.png' },
         { name: 'Go4Lease', logo: '/images/go4lease.png' }
     ]
 };
@@ -178,10 +177,14 @@ const partners = {
                     <div class="overflow-x-auto scrollbar-hide scroll-smooth overscroll-x-contain">
                         <div class="slider-track flex gap-4 animate-scroll-slow px-4">
                             <!-- Duplicated for infinite scroll -->
-                            <div
+                            <component
+                                :is="partner.pdf ? 'a' : 'div'"
                                 v-for="(partner, index) in [...partners.credit, ...partners.credit, ...partners.credit]"
                                 :key="`credit-${index}`"
-                                class="flex-shrink-0 w-32 h-24 rounded-lg border border-gray-200 bg-white p-3 flex items-center justify-center transition-transform active:scale-95"
+                                :href="partner.pdf || undefined"
+                                :target="partner.pdf ? '_blank' : undefined"
+                                :rel="partner.pdf ? 'noopener noreferrer' : undefined"
+                                class="relative flex-shrink-0 w-32 h-24 rounded-lg border border-gray-200 bg-white p-3 flex items-center justify-center transition-transform active:scale-95"
                             >
                                 <img
                                     :src="partner.logo"
@@ -192,7 +195,15 @@ const partners = {
                                     @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                                 />
                                 <span class="hidden text-xs font-light text-gray-500 text-center">{{ partner.name }}</span>
-                            </div>
+                                <span
+                                    v-if="partner.pdf"
+                                    class="absolute top-1 right-1 inline-flex items-center justify-center w-4 h-4 text-gray-400"
+                                >
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                                    </svg>
+                                </span>
+                            </component>
                         </div>
                     </div>
                     <!-- Gradient overlays -->
@@ -202,10 +213,16 @@ const partners = {
 
                 <!-- Tablet & Desktop: Grid -->
                 <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4">
-                    <div
+                    <component
+                        :is="partner.pdf ? 'a' : 'div'"
                         v-for="partner in partners.credit"
                         :key="partner.name"
+                        :href="partner.pdf || undefined"
+                        :target="partner.pdf ? '_blank' : undefined"
+                        :rel="partner.pdf ? 'noopener noreferrer' : undefined"
+                        :title="partner.pdf ? `Voir la documentation ${partner.name} (PDF)` : undefined"
                         class="group relative aspect-[4/3] rounded-lg border border-gray-200 hover:border-gray-300 bg-white p-3 flex items-center justify-center transition-all duration-300"
+                        :class="partner.pdf ? 'cursor-pointer hover:shadow-md' : ''"
                     >
                         <img
                             :src="partner.logo"
@@ -216,7 +233,16 @@ const partners = {
                             @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'block'; }"
                         />
                         <span class="hidden text-xs font-light text-gray-500 text-center">{{ partner.name }}</span>
-                    </div>
+                        <!-- Indicateur PDF -->
+                        <span
+                            v-if="partner.pdf"
+                            class="absolute top-1.5 right-1.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-900/5 text-[8px] font-medium text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                            </svg>
+                        </span>
+                    </component>
                 </div>
             </div>
 
