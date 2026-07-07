@@ -1,5 +1,5 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import MainLayout from '@/Layouts/MainLayout.vue';
 
 defineProps({
@@ -10,9 +10,20 @@ defineProps({
 <template>
     <Head title="Mentions Légales - Adiden Finances" />
 
-    <MainLayout :can-login="canLogin">
+    <MainLayout :can-login="canLogin" content-page>
         <div class="min-h-screen bg-white pt-32 pb-20">
             <div class="container mx-auto px-6 lg:px-12 max-w-4xl">
+
+                <!-- Retour à l'accueil -->
+                <Link
+                    href="/"
+                    class="inline-flex items-center gap-2 text-gray-500 hover:text-adiden font-light transition-colors mb-8"
+                >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    <span>Retour à l'accueil</span>
+                </Link>
 
                 <!-- Header -->
                 <div class="mb-16">
@@ -30,11 +41,11 @@ defineProps({
                         </h2>
                         <div class="space-y-3 text-gray-700 font-light">
                             <p><span class="font-normal">Dénomination sociale :</span> Adiden Finances</p>
-                            <p><span class="font-normal">Forme juridique :</span> Société privée à responsabilité limitée (SPRL)</p>
+                            <p><span class="font-normal">Forme juridique :</span> Société à responsabilité limitée (SRL)</p>
                             <p><span class="font-normal">Numéro d'entreprise (BCE) :</span> 0737 899 190</p>
                             <p><span class="font-normal">Numéro FSMA :</span> 0737 899 190</p>
                             <p><span class="font-normal">Adresse du siège social :</span> Avenue Henri Conscience 41, 1140 Evere, Belgique</p>
-                            <p><span class="font-normal">Téléphone :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">+32 489 62 39 90</a></p>
+                            <p><span class="font-normal">Téléphone :</span> <a href="tel:+32483508818" class="hover:text-gray-900 transition-colors">0483 508 818</a></p>
                             <p><span class="font-normal">Email :</span> <a href="mailto:info@adiden.be" class="hover:text-gray-900 transition-colors">info@adiden.be</a></p>
                         </div>
                     </section>
@@ -115,9 +126,9 @@ defineProps({
                         <div class="text-gray-700 font-light space-y-4">
                             <p>Si vous avez une réclamation concernant nos services, vous pouvez nous contacter par :</p>
                             <div class="bg-gray-50 rounded-xl p-6 space-y-2">
-                                <p><span class="font-normal">Email :</span> <a href="mailto:info@adidenfinances.be" class="hover:text-gray-900 transition-colors">info@adidenfinances.be</a></p>
+                                <p><span class="font-normal">Email :</span> <a href="mailto:info@adiden.be" class="hover:text-gray-900 transition-colors">info@adiden.be</a></p>
                                 <p><span class="font-normal">Courrier :</span> Avenue Henri Conscience 41, 1140 Evere</p>
-                                <p><span class="font-normal">Téléphone :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">+32 489 62 39 90</a></p>
+                                <p><span class="font-normal">Téléphone :</span> <a href="tel:+32483508818" class="hover:text-gray-900 transition-colors">0483 508 818</a></p>
                             </div>
                             <p>Nous nous engageons à traiter votre réclamation dans les plus brefs délais.</p>
                             <p>Si vous n'êtes pas satisfait de notre réponse, vous pouvez vous adresser à l'<a href="https://www.ombudsman-insurance.be" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-gray-700 transition-colors underline">Ombudsman des Assurances</a> ou au <a href="https://www.mediationconsommateur.be" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-gray-700 transition-colors underline">Service de Médiation pour le Consommateur</a>.</p>
@@ -155,7 +166,7 @@ defineProps({
                                 </ul>
                             </div>
 
-                            <p>Pour exercer ces droits, contactez-nous à l'adresse : <a href="mailto:info@adidenfinances.be" class="text-gray-900 hover:text-gray-700 transition-colors">info@adidenfinances.be</a></p>
+                            <p>Pour exercer ces droits, contactez-nous à l'adresse : <a href="mailto:info@adiden.be" class="text-gray-900 hover:text-gray-700 transition-colors">info@adiden.be</a></p>
                             <p>Pour toute réclamation, vous pouvez vous adresser à l'<a href="https://www.autoriteprotectiondonnees.be" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-gray-700 transition-colors underline">Autorité de protection des données</a>.</p>
                         </div>
                     </section>
@@ -191,8 +202,8 @@ defineProps({
                             <p class="font-normal text-gray-900">Avenue Henri Conscience 41</p>
                             <p>1140 Evere</p>
                             <p class="mt-4"><span class="font-normal">Assurances :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">0489 62 39 90</a></p>
-                            <p><span class="font-normal">Crédit Hypothécaire :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">0489 62 39 90</a></p>
-                            <p><span class="font-normal">Autres Crédits :</span> <a href="tel:+32489623990" class="hover:text-gray-900 transition-colors">0489 62 39 90</a></p>
+                            <p><span class="font-normal">Crédit Hypothécaire :</span> <a href="tel:+32483508818" class="hover:text-gray-900 transition-colors">0483 508 818</a></p>
+                            <p><span class="font-normal">Autres Crédits :</span> <a href="tel:+32483508818" class="hover:text-gray-900 transition-colors">0483 508 818</a></p>
                             <p class="mt-4"><a href="mailto:info@adiden.be" class="hover:text-gray-900 transition-colors">info@adiden.be</a></p>
                         </div>
                     </section>

@@ -143,7 +143,7 @@
                     <a href="/mentions-legales" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">
                         Mentions Légales
                     </a>
-                    <a href="#" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">
+                    <a href="/confidentialite" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">
                         Confidentialité
                     </a>
                     <a href="#" class="hover:text-white active:text-white transition-colors inline-flex items-center min-h-[44px] px-2 touch-manipulation">

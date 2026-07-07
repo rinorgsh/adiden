@@ -9,9 +9,20 @@ const showMobileMenu = ref(false);
 const isScrolled = ref(false);
 const activeSection = ref('');
 
-defineProps({
+const props = defineProps({
     canLogin: Boolean,
+    // Pages de contenu (Mentions légales, Confidentialité…) : fond clair fixe,
+    // on force le menu en mode "sur fond clair" pour qu'il reste visible.
+    contentPage: {
+        type: Boolean,
+        default: false,
+    },
 });
+
+// Sur une page de contenu, le fond est toujours clair → menu foncé/visible
+if (props.contentPage) {
+    isDarkBackground.value = false;
+}
 
 const openQuoteModal = () => {
     showQuoteModal.value = true;
@@ -66,14 +77,20 @@ const checkBackgroundColor = () => {
     const header = document.querySelector('header');
     if (!header) return;
 
-    const headerRect = header.getBoundingClientRect();
-    const centerY = headerRect.top + headerRect.height / 2;
-    const sections = document.querySelectorAll('section');
-
     // Détecter le scroll
     isScrolled.value = window.scrollY > 50;
     // Sticky CTA mobile : déclenché après ~70% du viewport (sortie hero)
     showMobileSticky.value = window.scrollY > window.innerHeight * 0.7;
+
+    // Pages de contenu : fond clair fixe, on garde le menu foncé/visible
+    if (props.contentPage) {
+        isDarkBackground.value = false;
+        return;
+    }
+
+    const headerRect = header.getBoundingClientRect();
+    const centerY = headerRect.top + headerRect.height / 2;
+    const sections = document.querySelectorAll('section');
 
     for (const section of sections) {
         const rect = section.getBoundingClientRect();

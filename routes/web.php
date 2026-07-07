@@ -19,6 +19,12 @@ Route::get('/mentions-legales', function () {
     ]);
 })->name('mentions-legales');
 
+Route::get('/confidentialite', function () {
+    return Inertia::render('Confidentialite', [
+        'canLogin' => Route::has('login'),
+    ]);
+})->name('confidentialite');
+
 // Route pour l'envoi du formulaire de devis
 Route::post('/api/devis', [DevisController::class, 'store']);
 
